@@ -1,0 +1,298 @@
+body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff0f5;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+      background-color: #ffb6c1;
+      padding: 15px;
+      border-radius: 8px 8px 0 0;
+      font-family: 'Pacifico', cursive;
+    }
+
+    h2 {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .series-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .series-list li {
+      margin: 10px;
+      padding: 15px;
+      background-color: #ffe4e1;
+      border-radius: 10px;
+      text-align: center;
+      width: 180px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .series-list li.completed {
+      background-color: #fc8599;
+    }
+
+    .series-list li:hover {
+      background-color: #feacbe;
+    }
+
+    .series-list a {
+      text-decoration: none;
+      color: #2c3e50;
+      display: block;
+      font-weight: bold;
+    }
+
+    .series-tracker {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      font-size: 0.8em;
+      color: #777;
+    }
+
+    .spotlight-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .spotlight-box {
+      width: 100%;
+      height: 100px;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .spotlight-box.glowing {
+      border-color: #ff69b4;
+      box-shadow: 0 0 10px #ff69b4;
+    }
+
+    .spotlight-box img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .spotlight-box .add-icon {
+      font-size: 2em;
+      color: #ff69b4;
+    }
+
+    .spotlight-box .remove-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 2em;
+      color: #dc143c;
+      transition: transform 0.2s ease;
+    }
+
+    .spotlight-box:hover .remove-icon {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+    }
+
+    .modal-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+    }
+
+    .modal-list li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .modal-list li img {
+      width: 80px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .modal-list li:last-child {
+      border-bottom: none;
+    }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .figure-item {
+      text-align: center;
+      cursor: pointer;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+      position: relative;
+    }
+
+    .figure-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .figure-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      filter: grayscale(100%);
+    }
+
+    .figure-item.collected img {
+      border-color: #ff69b4;
+      filter: grayscale(0%);
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+
+    .congrats-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      font-size: 2em;
+      font-weight: bold;
+      color: #ff69b4;
+      text-align: center;
+      animation: congrats-animation 3s ease-out;
+      pointer-events: none;
+      z-index: 1000;
+      font-family: 'Pacifico', cursive;
+    }
+
+    @keyframes congrats-animation {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -70%) scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -30%) scale(0.8);
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #f1c40f;
+      border-radius: 50%;
+      animation: confetti-animation 2s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes confetti-animation {
+      0% {
+        opacity: 1;
+        transform: translate(var(--x), var(--y)) rotate(0deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) rotate(360deg) scale(1.5);
+      }
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #e91e63;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(255, 105, 180, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); }
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
