@@ -139,11 +139,11 @@ function SeriesPage() {
           {renderConfetti()}
         </div>
       )}
-      <div className="Figure-grid">
+      <div className="figure-grid">
         {Figures && Figures.map(Figure => (
           <div
             key={Figure.id}
-            className={`Figure-item ${collected[`${seriesId}-${Figure.id}`] ? 'collected' : ''}`}
+            className={`figure-item ${collected[`${seriesId}-${Figure.id}`] ? 'collected' : ''}`}
             onClick={() => toggleCollected(Figure.id)}
           >
             <img src={Figure.imageUrl} alt={Figure.name} />
